@@ -144,7 +144,6 @@
             <groupId>org.apache.nifi</groupId>
             <artifactId>nifi-dbcp-service-api</artifactId>
             <version>1.8.0</version>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.nifi</groupId>
@@ -216,6 +215,19 @@
             <artifactId>hadoop-client</artifactId>
             <version>3.2.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.datastax.cassandra</groupId>
+            <artifactId>cassandra-driver-core</artifactId>
+            <version>3.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.nifi</groupId>
+            <artifactId>nifi-cassandra-services-api</artifactId>
+            <version>1.9.1</version>
+        </dependency>
+            <!-- https://mvnrepository.com/artifact/org.apache.nifi/nifi-cassandra-processors -->
+
+
     </dependencies>
 
     <build>
