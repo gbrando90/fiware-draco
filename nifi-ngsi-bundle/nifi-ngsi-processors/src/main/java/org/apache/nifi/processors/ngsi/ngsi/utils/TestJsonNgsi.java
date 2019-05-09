@@ -1,8 +1,5 @@
 package org.apache.nifi.processors.ngsi.ngsi.utils;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 public class TestJsonNgsi {
 
     public static void main(String[] args){
@@ -87,12 +84,7 @@ public class TestJsonNgsi {
                 "   ],\n" +
                 "   \"subscriptionId\": \"57458eb60962ef754e7c0998\"\n" +
                 "}";
-
-
-        NGSIUtils n = new NGSIUtils();
-        JSONObject flow = new JSONObject(json);
-        JSONArray data = (JSONArray )flow.get("data");
-
+        System.out.println(json);
     }
 
 }

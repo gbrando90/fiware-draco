@@ -8,7 +8,7 @@ markdown_extensions: [toc,fenced_code]
 use_directory_urls: false
 theme: readthedocs
 extra_css: ["https://fiware.org/style/fiware_readthedocs.css", "https://fiware.org/style/fiware_readthedocs_core.css"]
-google_analytics: ['UA-84866051-2', 'fiware-draco.readthedocs.io']
+google_analytics: ['UA-83727401-6', 'fiware-draco.readthedocs.io']
 pages:
   - Home: index.md
   - 'Quick Start Guide': quick_start_guide.md
@@ -29,5 +29,6 @@ pages:
       - 'MongoDB backend': 'processors_catalogue/ngsi_mongo_sink.md'
       - 'MySQL backend': 'processors_catalogue/ngsi_mysql_sink.md'
       - 'PostgreSQL backend': 'processors_catalogue/ngsi_postgresql_sink.md'
+      - 'REST Handler': 'processors_catalogue/ngsi_rest_handler.md'
       - 'Issues and Contact': 'processors_catalogue/issues_and_contact.md'
   - 'Roadmap': roadmap.md

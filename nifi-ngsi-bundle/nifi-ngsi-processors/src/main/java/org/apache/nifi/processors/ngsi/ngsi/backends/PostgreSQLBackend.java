@@ -1,15 +1,12 @@
 package org.apache.nifi.processors.ngsi.ngsi.backends;
 
 import org.apache.nifi.processors.ngsi.ngsi.utils.*;
-
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class PostgreSQLBackend {
-
-    public PostgreSQLBackend() {
-    }
 
     public ArrayList listOfFields (String attrPersistence){
         ArrayList<String> aggregation = new ArrayList<>();
@@ -25,13 +22,13 @@ public class PostgreSQLBackend {
             aggregation.add(NGSIConstants.ATTR_MD);
         }else if(attrPersistence.compareToIgnoreCase("column")==0){
             //TBD
+            System.out.println("column");
         }
         return aggregation;
     }
 
     public String getValuesForInsert(Entity entity, long creationTime, String fiwareServicePath) {
         String valuesForInsert = "";
-        boolean first = true;
             for (int i = 0; i < entity.getEntityAttrs().size(); i++) {
                 if (i == 0) {
                     valuesForInsert += "(";
@@ -54,7 +51,6 @@ public class PostgreSQLBackend {
                     valuesForInsert += ",'[]'";
                 }
                 valuesForInsert += ")";
-
             } // for
 
         return valuesForInsert;
@@ -139,13 +135,13 @@ public class PostgreSQLBackend {
                                 + NGSICharsets.encodePostgreSQL(entityType);
                         break;
                     default:
-                        System.out.println("Unknown data model '" + dataModel.toString()
+                        System.out.println("Unknown data model '" + dataModel
                                 + "'. Please, use dm-by-service-path, dm-by-entity or dm-by-attribute");
                 } // switch
             } else {
                 switch (dataModel) {
                     case "db-by-service-path":
-                        if (servicePath.equals("/")) {
+                        if ("/".equals(servicePath)) {
                             System.out.println("Default service path '/' cannot be used with "
                                     + "dm-by-service-path data model");
                         } // if
@@ -159,13 +155,14 @@ public class PostgreSQLBackend {
                                 + NGSICharsets.encode(entityType, false, true);
                         break;
                     default:
-                        System.out.println("Unknown data model '" + dataModel.toString()
+                        System.out.println("Unknown data model '" + dataModel
                                 + "'. Please, use DMBYSERVICEPATH, DMBYENTITY or DMBYATTRIBUTE");
+                        break;
                 } // switch
             } // if else
 
             if (tableName.length() > NGSIConstants.POSTGRESQL_MAX_NAME_LEN) {
-                throw new Exception("Building table name '" + tableName
+                throw new SQLException("Building table name '" + tableName
                         + "' and its length is greater than " + NGSIConstants.POSTGRESQL_MAX_NAME_LEN);
             } // if
         return tableName;
